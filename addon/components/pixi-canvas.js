@@ -9,17 +9,17 @@ const {
 export default Component.extend({
 
   height: computed({
-    get() { return 600; },
+    get() { },
     set(key, value) {
-      this.resizePixiRenderer(this.get('width'), value);
+      this.resizePixiRenderer();
       return value;
     }
   }),
 
   width: computed({
-    get() { return 800; },
+    get() { },
     set(key, value) {
-      this.resizePixiRenderer(value, this.get('height'));
+      this.resizePixiRenderer();
       return value;
     }
   }),
@@ -60,7 +60,9 @@ export default Component.extend({
 
   draw() {},
 
-  resizePixiRenderer(width, height) {
+  resizePixiRenderer() {
+    let width = this.get('width');
+    let height = this.get('height');
     this.get('pixiRenderer').resize(width, height);
   },
 });
